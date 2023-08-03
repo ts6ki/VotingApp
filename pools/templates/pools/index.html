@@ -1,0 +1,19 @@
+<html>
+  <!-- This tag is compulsory for any HTML document. -->
+  <head>
+    <!-- The Head tag is used to create a title of web page, CSS syntax for a web page, and helps in written a JavaScript code. -->
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <!-- The Body tag is used to display the content on a web page. In this example we do not specify any content or any tag, so in output nothing will display on the web page. -->
+    <ul>
+      {% for q in questions %}
+        {% if q.id|divisibleby:2 %}
+          <li style="color: rebeccapurple;">({{ q.id }}) - {{ q.question_text }}</li>
+        {% else %}
+          <li style="color: cadetblue;">({{ q.id }}) - {{ q.question_text }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </body>
+</html>

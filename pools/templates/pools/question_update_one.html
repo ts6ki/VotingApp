@@ -1,0 +1,13 @@
+<html>
+  <!-- This tag is compulsory for any HTML document. -->
+  <head>
+    <!-- The Head tag is used to create a title of web page, CSS syntax for a web page, and helps in written a JavaScript code. -->
+  </head>
+  <body>
+    <form action="http://localhost:8000/pools/update_one/{{qid}}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="question_text" />
+        <input type="submit" role="button" value="submit">
+    </form>
+  </body>
+</html>
