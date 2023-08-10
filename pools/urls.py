@@ -30,5 +30,5 @@ urlpatterns = [
     path("choice/<int:id>/delete/", choice_delete_view),
     path("choices/<int:question_id>/", choice_list_view),
 
-    path("detail/<str:qid>", question_detail)
+    path("details/<str:qid>", question_detail, name="question_detail")
 ]
