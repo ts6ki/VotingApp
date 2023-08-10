@@ -256,9 +256,7 @@
     </svg>
 
     {% if message %}
-    <div class="alert alert-success" role="alert">
-        {{ message }}
-      </div>
+    <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endif %}
 
     <div class="b-example-divider"></div>
@@ -266,25 +264,28 @@
     <div
       class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center"
     >
-      <div class="list-group">
+      <div class="list-group list-group-radio d-grid gap-2 border-0">
         <form method="POST" action="/pools/detail/{{question.id}}">
-            {% csrf_token %}
-            {% for c in choices %}
-            <label class="list-group-item d-flex gap-2">
+          {% csrf_token %} {% for c in choices %}
+          <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">
             <input
-                class="form-check-input flex-shrink-0"
-                type="radio"
-                name="selected_choice"
-                id="listGroupRadios{{ c.id }}"
-                value="{{c.id}}"
+              class="form-check-input position-absolute top-50 end-0 me-3 fs-5"
+              type="radio"
+              name="selected_choice"
+              id="listGroupRadios{{ c.id }}"
+              value="{{c.id}}"
             />
             <span>
-                {{ c.choice_text }}
-                <small class="d-block text-body-secondary">So far {{ c.cotes }} people selected this</small>
+              {{ c.choice_text }}
+              <small class="d-block small opacity-75"
+                >So far {{ c.cotes }} people selected this</small
+              >
             </span>
-            </label>
-            {% endfor %}
-            <button class="btn btn-primary w-100 py-2 mt-5" type="submit">Submit</button>
+          </label>
+          {% endfor %}
+          <button class="btn btn-primary w-100 py-2 mt-5" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </div>
