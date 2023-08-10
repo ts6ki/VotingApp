@@ -6,9 +6,13 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 def index(request):
     context = {}
+    vote_counts = {}  # question_id: number of votes
     context["title"] = "List of all questions"
     questions = Question.objects.all()
     context["questions"] = questions
+    for q in questions:
+        vote_counts[q.id] = sum([c.votes for c in q.choices.all()])
+    context["vote_counts"] = vote_counts
     return render(request, "pools/index.html", context)
 
 
