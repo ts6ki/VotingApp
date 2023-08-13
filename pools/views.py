@@ -40,8 +40,8 @@ def update_one(request, qid):
     context = {}
     context["qid"] = qid
     question = get_object_or_404(Question, pk=qid)
-    if request.method == 'POST':
-        text  = request.POST.get("question_text")
+    if request.method == "POST":
+        text = request.POST.get("question_text")
         question.question_text = text
         question.save()
     return render(request, "pools/question_update_one.html", context)
@@ -65,6 +65,7 @@ def question_detail(request, qid):
         selected_choice.save()
         context["message"] = "You voted successfully..."
     return render(request, "pools/question_detail.html", context)
+
 
 # def hello(request, first_name):
 #     return HttpResponse("Hello " + first_name + ". You are on the Hello page.")
