@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from pools.models import Question, Choice
 from datetime import datetime
 from django.shortcuts import get_object_or_404, render, redirect
+from pools.forms import QuestionForm
 
 
 def index(request):
@@ -40,10 +41,19 @@ def update_one(request, qid):
     context = {}
     context["qid"] = qid
     question = get_object_or_404(Question, pk=qid)
+<<<<<<< HEAD
     if request.method == "POST":
         text = request.POST.get("question_text")
         question.question_text = text
         question.save()
+=======
+    if request.method == 'POST':
+        form = QuestionForm(request.POST, instance=question)
+        if form.is_valid():
+            form.save()
+    form = QuestionForm(instance=question)
+    context["form"] = form
+>>>>>>> 8e0edf1577ef8c6918908223b733447b085c962d
     return render(request, "pools/question_update_one.html", context)
     # questions = Question.objects.get(id = qid)
     # questions.question_text = "Question " + qid + " has been updated"
